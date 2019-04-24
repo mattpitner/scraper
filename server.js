@@ -2,6 +2,10 @@ var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+
+
+
+
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
@@ -18,6 +22,7 @@ var app = express();
 
 // Configure middleware
 
+
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 // Parse request body as JSON
@@ -27,7 +32,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
 mongoose.connect("mongodb://localhost/scraper", { useNewUrlParser: true });
+
 
 // Routes
 
